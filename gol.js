@@ -65,7 +65,11 @@ Grid.prototype = {
 
   start: function(interval){
     var that = this;
-    setInterval(function(){
+    var runnerId = setInterval(function(){
+      if(that.allDead()){
+        alert('Done');
+        clearInterval(runnerId);
+      }
       that.run();
     }, interval);
   },
